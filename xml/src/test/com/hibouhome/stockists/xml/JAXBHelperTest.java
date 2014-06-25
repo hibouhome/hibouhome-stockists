@@ -56,6 +56,7 @@ public class JAXBHelperTest {
 	@Test(expected = JAXBException.class)
 	public void marshalInvalid() throws Exception {
 		final Stockists stockists = getStockists();
+		// set required attribute to null to make the object invalid
 		stockists.getCountries().get(0).setName(null);
 		final File file = folder.newFile();
 		jaxbHelper.marshal(stockists, file);
