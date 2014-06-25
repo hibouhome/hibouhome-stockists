@@ -1,2 +1,2 @@
-call xjc -b stockists.xjb -d src -p com.hibouhome.stockists.xml.jaxb src/com/hibouhome/stockists/xml/stockists.xsd
+call xjc -b stockists.xjb -d src/main -p com.hibouhome.stockists.xml.jaxb src/main/com/hibouhome/stockists/xml/stockists.xsd
 pause

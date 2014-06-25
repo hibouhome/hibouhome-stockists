@@ -1,6 +1,6 @@
 <jxb:bindings version="2.0" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-	<jxb:bindings schemaLocation="src/com/hibouhome/stockists/xml/stockists.xsd">
+	<jxb:bindings schemaLocation="src/main/com/hibouhome/stockists/xml/stockists.xsd">
 
 		<jxb:bindings node="//xs:element[@name='stockists']//xs:element[@name='country']">
 			<jxb:property name="countries" />
