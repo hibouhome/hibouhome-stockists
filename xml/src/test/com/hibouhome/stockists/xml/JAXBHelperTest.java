@@ -34,6 +34,7 @@ public class JAXBHelperTest {
 	@Test
 	public void unmarshalValid() throws Exception {
 		final File file = getFile("JAXBHelperTest_valid.xml");
+		assertTrue(file.isFile());
 		final Stockists stockists = jaxbHelper.unmarshal(file);
 		assertNotNull(stockists);
 		assertEquals(getStockists(), stockists);
@@ -42,6 +43,7 @@ public class JAXBHelperTest {
 	@Test(expected = JAXBException.class)
 	public void unmarshalInvalid() throws Exception {
 		final File file = getFile("JAXBHelperTest_invalid.xml");
+		assertTrue(file.isFile());
 		jaxbHelper.unmarshal(file);
 	}
 
