@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="stockists">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="country" type="country" minOccurs="1" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="country">
+		<xs:sequence>
+			<xs:element name="region" type="region" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="stockist" type="stockist" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="display-index" type="positiveInt" />
+	</xs:complexType>
+
+	<xs:complexType name="region">
+		<xs:sequence>
+			<xs:element name="stockist" type="stockist" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="display-index" type="positiveInt" />
+	</xs:complexType>
+
+	<xs:complexType name="stockist">
+		<xs:sequence>
+			<xs:element name="address-line" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="telephone" type="xs:string" minOccurs="0" />
+			<xs:element name="fax" type="xs:string" minOccurs="0" />
+			<xs:element name="email" type="xs:string" minOccurs="0" />
+			<xs:element name="website" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="display-index" type="positiveInt" />
+	</xs:complexType>
+
+	<!-- define a new type because JAXB maps xs:positiveInteger to BigInteger -->
+	<xs:simpleType name="positiveInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0" />
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
