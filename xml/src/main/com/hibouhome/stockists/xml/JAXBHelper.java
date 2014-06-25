@@ -31,6 +31,7 @@ import com.hibouhome.stockists.xml.jaxb.Stockists;
  */
 public final class JAXBHelper {
 
+	static final String CONTEXT_PATH = Stockists.class.getPackage().getName();
 	private static final String SCHEMA_NAME = "stockists.xsd";
 
 	private final JAXBContext jaxbContext;
@@ -40,15 +41,14 @@ public final class JAXBHelper {
 	 * Constructs a new instance
 	 */
 	public JAXBHelper() {
-		final String contextPath = com.hibouhome.stockists.xml.jaxb.Stockists.class.getPackage().getName();
 		try {
-			jaxbContext = JAXBContext.newInstance(contextPath);
+			jaxbContext = JAXBContext.newInstance(CONTEXT_PATH);
 			final SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			final Source schemaSource = new StreamSource(getClass().getResourceAsStream(SCHEMA_NAME));
 			schema = schemaFactory.newSchema(schemaSource);
 		} catch (final JAXBException e) {
 			// unrecoverable error
-			throw new ApplicationError("Error instantiating JAXBContext. Context path: " + contextPath, e);
+			throw new ApplicationError("Error instantiating JAXBContext. Context path: " + CONTEXT_PATH, e);
 		} catch (final SAXException e) {
 			// unrecoverable error
 			throw new ApplicationError("Error instantiating Schema " + SCHEMA_NAME, e);
