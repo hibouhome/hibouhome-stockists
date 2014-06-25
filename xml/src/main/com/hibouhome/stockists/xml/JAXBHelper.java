@@ -31,7 +31,7 @@ import com.hibouhome.stockists.xml.jaxb.Stockists;
  */
 public final class JAXBHelper {
 
-	private static final String SCHEMA_NAME = "stockist-data.xsd";
+	private static final String SCHEMA_NAME = "stockists.xsd";
 
 	private final JAXBContext jaxbContext;
 	private final Schema schema;
@@ -51,7 +51,7 @@ public final class JAXBHelper {
 			throw new ApplicationError("Error instantiating JAXBContext. Context path: " + contextPath, e);
 		} catch (final SAXException e) {
 			// unrecoverable error
-			throw new ApplicationError("Error instantiating Schema for " + SCHEMA_NAME, e);
+			throw new ApplicationError("Error instantiating Schema " + SCHEMA_NAME, e);
 		}
 	}
 
@@ -62,12 +62,12 @@ public final class JAXBHelper {
 	 * @return
 	 * @throws JAXBException if an error occurs
 	 */
-	public Stockists unmarshall(final File file) throws JAXBException {
+	public Stockists unmarshal(final File file) throws JAXBException {
 		Validate.notNull(file, "file cannot be null");
 		Validate.isTrue(file.isFile(), "file must be a valid file");
 
 		final Source source = new StreamSource(file);
-		return unmarshall(source);
+		return unmarshal(source);
 	}
 
 	/**
@@ -77,7 +77,7 @@ public final class JAXBHelper {
 	 * @return a new instance of {@link Stockists}
 	 * @throws JAXBException if an error occurs
 	 */
-	public Stockists unmarshall(final Source source) throws JAXBException {
+	public Stockists unmarshal(final Source source) throws JAXBException {
 		Validate.notNull(source, "source cannot be null");
 
 		final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
@@ -92,7 +92,7 @@ public final class JAXBHelper {
 	 * @param result output target {@link Result}
 	 * @throws JAXBException if an error occurs
 	 */
-	public void marshall(final Stockists stockists, final Result result) throws JAXBException {
+	public void marshal(final Stockists stockists, final Result result) throws JAXBException {
 		Validate.notNull(stockists, "stockists cannot be null");
 		Validate.notNull(result, "result cannot be null");
 

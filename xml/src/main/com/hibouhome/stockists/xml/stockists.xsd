@@ -14,7 +14,7 @@
 			<xs:element name="region" type="region" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element name="stockist" type="stockist" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
-		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" use="required" />
 		<xs:attribute name="display-index" type="positiveInt" />
 	</xs:complexType>
 
@@ -22,7 +22,7 @@
 		<xs:sequence>
 			<xs:element name="stockist" type="stockist" minOccurs="1" maxOccurs="unbounded" />
 		</xs:sequence>
-		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" use="required" />
 		<xs:attribute name="display-index" type="positiveInt" />
 	</xs:complexType>
 
@@ -34,7 +34,7 @@
 			<xs:element name="email" type="xs:string" minOccurs="0" />
 			<xs:element name="website" type="xs:string" minOccurs="0" />
 		</xs:sequence>
-		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" use="required" />
 		<xs:attribute name="display-index" type="positiveInt" />
 	</xs:complexType>
 
