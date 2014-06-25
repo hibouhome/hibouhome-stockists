@@ -5,7 +5,6 @@
 // Generated on: 2014.06.25 at 03:29:54 PM BST 
 //
 
-
 package com.hibouhome.stockists.xml.jaxb;
 
 import java.util.ArrayList;
@@ -17,11 +16,12 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for country complex type.
+ * <p>
+ * Java class for country complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="country">
@@ -41,133 +41,119 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "country", propOrder = {
-    "regions",
-    "stockists"
-})
+@XmlType(name = "country", propOrder = { "regions", "stockists" })
 public class Country {
 
-    @XmlElement(name = "region")
-    protected List<Region> regions;
-    @XmlElement(name = "stockist")
-    protected List<Stockist> stockists;
-    @XmlAttribute(name = "name")
-    protected String name;
-    @XmlAttribute(name = "display-index")
-    protected Integer displayIndex;
+	@XmlElement(name = "region")
+	protected List<Region> regions;
+	@XmlElement(name = "stockist")
+	protected List<Stockist> stockists;
+	@XmlAttribute(name = "name")
+	protected String name;
+	@XmlAttribute(name = "display-index")
+	protected Integer displayIndex;
 
-    /**
-     * Gets the value of the regions property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the regions property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRegions().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Region }
-     * 
-     * 
-     */
-    public List<Region> getRegions() {
-        if (regions == null) {
-            regions = new ArrayList<Region>();
-        }
-        return this.regions;
-    }
+	/**
+	 * Gets the value of the regions property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+	 * modification you make to the returned list will be present inside the JAXB object. This is
+	 * why there is not a <CODE>set</CODE> method for the regions property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getRegions().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Region }
+	 * 
+	 * 
+	 */
+	public List<Region> getRegions() {
+		if (regions == null) {
+			regions = new ArrayList<Region>();
+		}
+		return this.regions;
+	}
 
-    /**
-     * Gets the value of the stockists property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the stockists property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getStockists().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Stockist }
-     * 
-     * 
-     */
-    public List<Stockist> getStockists() {
-        if (stockists == null) {
-            stockists = new ArrayList<Stockist>();
-        }
-        return this.stockists;
-    }
+	/**
+	 * Gets the value of the stockists property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+	 * modification you make to the returned list will be present inside the JAXB object. This is
+	 * why there is not a <CODE>set</CODE> method for the stockists property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getStockists().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Stockist }
+	 * 
+	 * 
+	 */
+	public List<Stockist> getStockists() {
+		if (stockists == null) {
+			stockists = new ArrayList<Stockist>();
+		}
+		return this.stockists;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the displayIndex property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getDisplayIndex() {
-        return displayIndex;
-    }
+	/**
+	 * Gets the value of the displayIndex property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getDisplayIndex() {
+		return displayIndex;
+	}
 
-    /**
-     * Sets the value of the displayIndex property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setDisplayIndex(Integer value) {
-        this.displayIndex = value;
-    }
+	/**
+	 * Sets the value of the displayIndex property.
+	 * 
+	 * @param value allowed object is {@link Integer }
+	 * 
+	 */
+	public void setDisplayIndex(Integer value) {
+		this.displayIndex = value;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((displayIndex == null) ? 0 : displayIndex.hashCode());
+		result = prime * result + ((displayIndex == null) ? 0 : displayIndex.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}

@@ -5,7 +5,6 @@
 // Generated on: 2014.06.25 at 03:29:54 PM BST 
 //
 
-
 package com.hibouhome.stockists.xml.jaxb;
 
 import java.util.ArrayList;
@@ -17,11 +16,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,50 +38,46 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "countries"
-})
+@XmlType(name = "", propOrder = { "countries" })
 @XmlRootElement(name = "stockists")
 public class Stockists {
 
-    @XmlElement(name = "country", required = true)
-    protected List<Country> countries;
+	@XmlElement(name = "country", required = true)
+	protected List<Country> countries;
 
-    /**
-     * Gets the value of the countries property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the countries property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCountries().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Country }
-     * 
-     * 
-     */
-    public List<Country> getCountries() {
-        if (countries == null) {
-            countries = new ArrayList<Country>();
-        }
-        return this.countries;
-    }
+	/**
+	 * Gets the value of the countries property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a snapshot. Therefore any
+	 * modification you make to the returned list will be present inside the JAXB object. This is
+	 * why there is not a <CODE>set</CODE> method for the countries property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getCountries().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Country }
+	 * 
+	 * 
+	 */
+	public List<Country> getCountries() {
+		if (countries == null) {
+			countries = new ArrayList<Country>();
+		}
+		return this.countries;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((countries == null) ? 0 : countries.hashCode());
+		result = prime * result + ((countries == null) ? 0 : countries.hashCode());
 		return result;
 	}
 
