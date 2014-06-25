@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.hibouhome.stockists.xml.Sortable;
+
 /**
  * <p>
  * Java class for region complex type.
@@ -41,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "region", propOrder = { "stockists" })
-public class Region {
+public class Region implements Sortable {
 
 	@XmlElement(name = "stockist", required = true)
 	protected List<Stockist> stockists;

@@ -16,6 +16,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.hibouhome.stockists.xml.Sortable;
+
 /**
  * <p>
  * Java class for stockist complex type.
@@ -45,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "stockist", propOrder = { "addressLines", "telephone", "fax", "email", "website" })
-public class Stockist {
+public class Stockist implements Sortable {
 
 	@XmlElement(name = "address-line")
 	protected List<String> addressLines;
