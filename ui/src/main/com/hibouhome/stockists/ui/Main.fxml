@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.hibouhome.stockists.ui.MainController">
+	<children>
+		<MenuBar VBox.vgrow="NEVER">
+			<menus>
+				<Menu mnemonicParsing="true" text="_File">
+					<items>
+						<MenuItem mnemonicParsing="true" onAction="#openFile" text="_Open">
+							<accelerator>
+								<KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+							</accelerator>
+						</MenuItem>
+						<MenuItem mnemonicParsing="true" onAction="#saveFile" text="_Save" fx:id="saveFileMenuItem">
+							<accelerator>
+								<KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+							</accelerator>
+						</MenuItem>
+						<MenuItem mnemonicParsing="false" onAction="#saveFileAs" text="Save As..." fx:id="saveAsFileMenuItem" />
+						<MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="true" text="_Help">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#showAbout" text="About" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+		<TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+			<tabs>
+				<Tab text="Edit">
+					<content>
+						<AnchorPane />
+					</content>
+				</Tab>
+				<Tab text="Preview">
+					<content>
+						<AnchorPane />
+					</content>
+				</Tab>
+				<Tab text="Code">
+					<content>
+						<AnchorPane />
+					</content>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</children>
+</VBox>
