@@ -41,7 +41,7 @@
 				</Tab>
 				<Tab text="Preview">
 					<content>
-						<AnchorPane />
+						<fx:include fx:id="preview" source="preview/Preview.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Code">
