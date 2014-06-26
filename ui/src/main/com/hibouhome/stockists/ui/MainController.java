@@ -2,10 +2,16 @@ package com.hibouhome.stockists.ui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
+
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
 
 public class MainController {
 
@@ -33,6 +39,11 @@ public class MainController {
 
 	@FXML
 	void exit(ActionEvent event) {
+		final Action result = Dialogs.create().owner(tabPane.getScene().getWindow())
+				.message("Exit Hibou Home Stockists Editor?").showConfirm();
+		if (Dialog.Actions.YES.equals(result)) {
+			Platform.exit();
+		}
 	}
 
 	@FXML
@@ -49,5 +60,7 @@ public class MainController {
 
 	@FXML
 	void showAbout(ActionEvent event) {
+		Dialogs.create().owner(tabPane.getScene().getWindow()).title("About")
+				.message("Hibou Home Stockists Editor v1.0").showInformation();
 	}
 }
