@@ -46,7 +46,7 @@
 				</Tab>
 				<Tab text="Code">
 					<content>
-						<AnchorPane />
+						<fx:include fx:id="code" source="code/Code.fxml" />
 					</content>
 				</Tab>
 			</tabs>

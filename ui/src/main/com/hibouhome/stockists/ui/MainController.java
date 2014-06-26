@@ -13,6 +13,9 @@ import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
+import com.hibouhome.stockists.ui.code.CodeController;
+import com.hibouhome.stockists.ui.preview.PreviewController;
+
 /**
  * 
  * @author Jonathan Wright
@@ -34,6 +37,12 @@ public class MainController {
 
 	@FXML
 	private TabPane tabPane;
+
+	@FXML
+	private PreviewController previewController;
+
+	@FXML
+	private CodeController codeController;
 
 	@FXML
 	void initialize() {
