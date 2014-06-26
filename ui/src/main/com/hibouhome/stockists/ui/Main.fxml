@@ -16,12 +16,12 @@
 								<KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
 							</accelerator>
 						</MenuItem>
-						<MenuItem mnemonicParsing="true" onAction="#saveFile" text="_Save" fx:id="saveFileMenuItem">
+						<MenuItem disable="true" mnemonicParsing="true" onAction="#saveFile" text="_Save" fx:id="saveFileMenuItem">
 							<accelerator>
 								<KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
 							</accelerator>
 						</MenuItem>
-						<MenuItem mnemonicParsing="false" onAction="#saveFileAs" text="Save As..." fx:id="saveAsFileMenuItem" />
+						<MenuItem disable="true" mnemonicParsing="false" onAction="#saveFileAs" text="Save As..." fx:id="saveAsFileMenuItem" />
 						<MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
 					</items>
 				</Menu>
