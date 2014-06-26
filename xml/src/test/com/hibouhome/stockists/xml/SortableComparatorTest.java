@@ -15,33 +15,33 @@ public class SortableComparatorTest {
 	}
 
 	@Test
-	public void countryBothWithDisplayIndex() {
-		final SortableImpl s1 = new SortableImpl(null, 1);
-		final SortableImpl s2 = new SortableImpl(null, 2);
+	public void bothWithDisplayIndex() {
+		final Sortable s1 = new SortableImpl(null, 1);
+		final Sortable s2 = new SortableImpl(null, 2);
 		assertTrue(comparator.compare(s1, s2) < 0);
 		assertTrue(comparator.compare(s2, s1) > 0);
 	}
 
 	@Test
-	public void countryOneWithDisplayIndex() {
-		final SortableImpl s1 = new SortableImpl(null, 1);
-		final SortableImpl s2 = new SortableImpl(null, null);
+	public void oneWithDisplayIndex() {
+		final Sortable s1 = new SortableImpl(null, 1);
+		final Sortable s2 = new SortableImpl(null, null);
 		assertTrue(comparator.compare(s1, s2) < 0);
 		assertTrue(comparator.compare(s2, s1) > 0);
 	}
 
 	@Test
-	public void countryNeitherWithDisplayIndex() {
-		final SortableImpl s1 = new SortableImpl("A", null);
-		final SortableImpl s2 = new SortableImpl("B", null);
+	public void neitherWithDisplayIndex() {
+		final Sortable s1 = new SortableImpl("A", null);
+		final Sortable s2 = new SortableImpl("B", null);
 		assertTrue(comparator.compare(s1, s2) < 0);
 		assertTrue(comparator.compare(s2, s1) > 0);
 	}
 
 	@Test
-	public void countryBothWithSameName() {
-		final SortableImpl s1 = new SortableImpl("A", null);
-		final SortableImpl s2 = new SortableImpl("A", null);
+	public void bothWithSameName() {
+		final Sortable s1 = new SortableImpl("A", null);
+		final Sortable s2 = new SortableImpl("A", null);
 		assertTrue(comparator.compare(s1, s2) == 0);
 		assertTrue(comparator.compare(s2, s1) == 0);
 	}
