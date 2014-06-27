@@ -1,5 +1,7 @@
 package com.hibouhome.stockists.ui;
 
+import org.controlsfx.dialog.Dialogs;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +25,13 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setMaximized(true);
 			primaryStage.setTitle("Hibou Home Stockists Editor");
+			Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+
+				@Override
+				public void uncaughtException(final Thread t, final Throwable e) {
+					Dialogs.create().owner(primaryStage).title("Error").showException(e);
+				}
+			});
 			primaryStage.show();
 		} catch (final Exception e) {
 			e.printStackTrace();
