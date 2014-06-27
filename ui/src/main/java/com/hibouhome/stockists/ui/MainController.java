@@ -18,6 +18,7 @@ import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
 import com.hibouhome.stockists.ui.code.CodeController;
+import com.hibouhome.stockists.ui.editor.EditorController;
 import com.hibouhome.stockists.ui.preview.PreviewController;
 import com.hibouhome.stockists.xml.InvalidStockistDataException;
 import com.hibouhome.stockists.xml.JAXBHelper;
@@ -28,6 +29,7 @@ import com.hibouhome.stockists.xml.XSLTHelper;
 import com.hibouhome.stockists.xml.jaxb.Stockists;
 
 /**
+ * Top level JavaFX controller
  * 
  * @author Jonathan Wright
  *
@@ -36,22 +38,20 @@ public class MainController {
 
 	@FXML
 	private ResourceBundle resources;
-
 	@FXML
 	private URL location;
 
 	@FXML
 	private MenuItem saveAsFileMenuItem;
-
 	@FXML
 	private MenuItem saveFileMenuItem;
-
 	@FXML
 	private TabPane tabPane;
 
 	@FXML
+	private EditorController editorController;
+	@FXML
 	private PreviewController previewController;
-
 	@FXML
 	private CodeController codeController;
 
@@ -73,7 +73,6 @@ public class MainController {
 		jaxbHelper = new JAXBHelper();
 		xsltHelper = new XSLTHelper();
 		stockistDataSorter = new StockistDataSorter(new SortableComparator());
-		;
 	}
 
 	@FXML

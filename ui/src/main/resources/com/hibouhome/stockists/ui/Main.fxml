@@ -38,7 +38,7 @@
 			<tabs>
 				<Tab text="Edit">
 					<content>
-						<AnchorPane />
+						<fx:include fx:id="editor" source="editor/Editor.fxml" />
 					</content>
 				</Tab>
 				<Tab text="Preview">
