@@ -86,6 +86,7 @@ public class Region implements Sortable {
 	 * @return possible object is {@link String }
 	 * 
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -96,7 +97,8 @@ public class Region implements Sortable {
 	 * @param value allowed object is {@link String }
 	 * 
 	 */
-	public void setName(String value) {
+	@Override
+	public void setName(final String value) {
 		this.name = value;
 	}
 
@@ -106,6 +108,7 @@ public class Region implements Sortable {
 	 * @return possible object is {@link Integer }
 	 * 
 	 */
+	@Override
 	public Integer getDisplayIndex() {
 		return displayIndex;
 	}
@@ -116,7 +119,8 @@ public class Region implements Sortable {
 	 * @param value allowed object is {@link Integer }
 	 * 
 	 */
-	public void setDisplayIndex(Integer value) {
+	@Override
+	public void setDisplayIndex(final Integer value) {
 		this.displayIndex = value;
 	}
 
@@ -131,14 +135,14 @@ public class Region implements Sortable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Region other = (Region) obj;
+		final Region other = (Region) obj;
 		if (displayIndex == null) {
 			if (other.displayIndex != null)
 				return false;
@@ -155,5 +159,10 @@ public class Region implements Sortable {
 		} else if (!stockists.equals(other.stockists))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }

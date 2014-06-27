@@ -117,6 +117,7 @@ public class Country implements Sortable {
 	 * @return possible object is {@link String }
 	 * 
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -127,7 +128,8 @@ public class Country implements Sortable {
 	 * @param value allowed object is {@link String }
 	 * 
 	 */
-	public void setName(String value) {
+	@Override
+	public void setName(final String value) {
 		this.name = value;
 	}
 
@@ -137,6 +139,7 @@ public class Country implements Sortable {
 	 * @return possible object is {@link Integer }
 	 * 
 	 */
+	@Override
 	public Integer getDisplayIndex() {
 		return displayIndex;
 	}
@@ -147,7 +150,8 @@ public class Country implements Sortable {
 	 * @param value allowed object is {@link Integer }
 	 * 
 	 */
-	public void setDisplayIndex(Integer value) {
+	@Override
+	public void setDisplayIndex(final Integer value) {
 		this.displayIndex = value;
 	}
 
@@ -163,14 +167,14 @@ public class Country implements Sortable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Country other = (Country) obj;
+		final Country other = (Country) obj;
 		if (displayIndex == null) {
 			if (other.displayIndex != null)
 				return false;
@@ -192,5 +196,10 @@ public class Country implements Sortable {
 		} else if (!stockists.equals(other.stockists))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }
