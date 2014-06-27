@@ -132,7 +132,6 @@ public final class JAXBHelper {
 	public void marshal(final Stockists stockists, final File file) throws InvalidStockistDataException {
 		Validate.notNull(stockists, "stockists cannot be null");
 		Validate.notNull(file, "file cannot be null");
-		Validate.isTrue(file.isFile(), "file must be a valid file");
 
 		final ValidationEventCollector eventHandler = new ValidationEventCollector();
 		try {
