@@ -23,6 +23,8 @@ import com.hibouhome.stockists.xml.ApplicationException;
 import com.hibouhome.stockists.xml.InvalidStockistDataException;
 import com.hibouhome.stockists.xml.JAXBHelper;
 import com.hibouhome.stockists.xml.Preview;
+import com.hibouhome.stockists.xml.SortableComparator;
+import com.hibouhome.stockists.xml.StockistDataSorter;
 import com.hibouhome.stockists.xml.XSLTHelper;
 import com.hibouhome.stockists.xml.jaxb.Stockists;
 import com.sun.xml.internal.ws.message.jaxb.JAXBHeader;
@@ -58,15 +60,22 @@ public class MainController {
 	private ApplicationPreferences applicationPreferences;
 	private JAXBHelper jaxbHelper;
 	private XSLTHelper xsltHelper;
+	private StockistDataSorter stockistDataSorter;
+
+	private File openFile;
+	private Stockists stockists;
 
 	@FXML
 	void initialize() {
 		assert saveAsFileMenuItem != null : "fx:id=\"saveAsFileMenuItem\" was not injected: check your FXML file 'Main.fxml'.";
 		assert saveFileMenuItem != null : "fx:id=\"saveFileMenuItem\" was not injected: check your FXML file 'Main.fxml'.";
 		assert tabPane != null : "fx:id=\"tabPane\" was not injected: check your FXML file 'Main.fxml'.";
+
 		applicationPreferences = new ApplicationPreferences();
 		jaxbHelper = new JAXBHelper();
 		xsltHelper = new XSLTHelper();
+		stockistDataSorter = new StockistDataSorter(new SortableComparator());
+		;
 	}
 
 	@FXML
@@ -87,11 +96,15 @@ public class MainController {
 		final File file = fileChooser.showOpenDialog(getWindow());
 		applicationPreferences.setLastDir(file.getParentFile());
 		try {
-			final Stockists stockists = jaxbHelper.unmarshal(file);
+			stockists = jaxbHelper.unmarshal(file);
+			stockistDataSorter.sort(stockists);
 			final String html = xsltHelper.transform(jaxbHelper.getSource(stockists));
 			final Preview preview = new Preview(html);
 			previewController.setPreview(preview.getPreview());
 			codeController.setCode(html);
+			saveFileMenuItem.setDisable(false);
+			saveAsFileMenuItem.setDisable(false);
+			openFile = file;
 		} catch (final Exception e) {
 			Dialogs.create().owner(getWindow()).title("Error opening " + file.getAbsolutePath()).showException(e);
 		}
@@ -99,10 +112,17 @@ public class MainController {
 
 	@FXML
 	void saveFile(final ActionEvent event) {
+		saveStockists(openFile);
 	}
 
 	@FXML
 	void saveFileAs(final ActionEvent event) {
+		final FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Save As...");
+		fileChooser.setInitialDirectory(applicationPreferences.getLastDir());
+		fileChooser.getExtensionFilters().add(new ExtensionFilter("XML files", "*.xml"));
+		final File file = fileChooser.showSaveDialog(getWindow());
+		saveStockists(file);
 	}
 
 	@FXML
@@ -112,5 +132,14 @@ public class MainController {
 
 	private Window getWindow() {
 		return tabPane.getScene().getWindow();
+	}
+
+	private void saveStockists(final File file) {
+		try {
+			stockistDataSorter.sort(stockists);
+			jaxbHelper.marshal(stockists, file);
+		} catch (final InvalidStockistDataException e) {
+			Dialogs.create().owner(getWindow()).title("Error saving " + file.getAbsolutePath()).showException(e);
+		}
 	}
 }
