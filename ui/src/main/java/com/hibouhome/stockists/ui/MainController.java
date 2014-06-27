@@ -19,6 +19,7 @@ import org.controlsfx.dialog.Dialogs;
 
 import com.hibouhome.stockists.ui.code.CodeController;
 import com.hibouhome.stockists.ui.editor.EditorController;
+import com.hibouhome.stockists.ui.editor.Model;
 import com.hibouhome.stockists.ui.preview.PreviewController;
 import com.hibouhome.stockists.xml.InvalidStockistDataException;
 import com.hibouhome.stockists.xml.JAXBHelper;
@@ -95,12 +96,19 @@ public class MainController {
 		try {
 			stockists = jaxbHelper.unmarshal(file);
 			stockistDataSorter.sort(stockists);
+			// editor
+			final Model model = new Model(stockists);
+			editorController.setModel(model);
+			// preview
 			final String html = xsltHelper.transform(jaxbHelper.getSource(stockists));
 			final Preview preview = new Preview(html);
 			previewController.setPreview(preview.getPreview());
+			// code
 			codeController.setCode(html);
+			// enable save menu items
 			saveFileMenuItem.setDisable(false);
 			saveAsFileMenuItem.setDisable(false);
+			// store a reference to the opened file
 			openFile = file;
 		} catch (final Exception e) {
 			Dialogs.create().owner(getWindow()).title("Error opening " + file.getAbsolutePath()).showException(e);
