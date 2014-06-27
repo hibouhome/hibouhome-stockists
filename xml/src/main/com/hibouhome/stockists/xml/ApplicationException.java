@@ -21,6 +21,16 @@ public class ApplicationException extends Exception {
 	}
 
 	/**
+	 * Constructs a new application exception with the specified cause.
+	 * 
+	 * @param cause the cause. (A null value is permitted, and indicates that the cause is
+	 *            nonexistent or unknown.)
+	 */
+	public ApplicationException(Throwable cause) {
+		super(cause);
+	}
+
+	/**
 	 * Constructs a new application exception with the specified detail message and cause.
 	 * 
 	 * @param message the detail message.

@@ -8,8 +8,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
-import javax.xml.bind.JAXBException;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -37,7 +35,7 @@ public class JAXBHelperTest {
 		assertEquals(getStockists(), stockists);
 	}
 
-	@Test(expected = JAXBException.class)
+	@Test(expected = InvalidStockistDataException.class)
 	public void unmarshalInvalid() throws Exception {
 		final File file = getFile("JAXBHelperTest_invalid.xml");
 		jaxbHelper.unmarshal(file);
@@ -51,7 +49,7 @@ public class JAXBHelperTest {
 		assertTrue(file.isFile());
 	}
 
-	@Test(expected = JAXBException.class)
+	@Test(expected = InvalidStockistDataException.class)
 	public void marshalInvalid() throws Exception {
 		final Stockists stockists = getStockists();
 		// set required attribute to null to make the object invalid

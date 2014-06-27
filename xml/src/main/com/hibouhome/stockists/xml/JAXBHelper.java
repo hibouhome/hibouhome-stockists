@@ -8,6 +8,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.util.JAXBSource;
+import javax.xml.bind.util.ValidationEventCollector;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
@@ -56,33 +57,48 @@ public final class JAXBHelper {
 	}
 
 	/**
-	 * Unmarshals
+	 * Unmarshals stockist data from the specified {@link File}
 	 * 
 	 * @param file the stockists data XML {@link File}
 	 * @return
-	 * @throws JAXBException if an error occurs
+	 * @throws InvalidStockistDataException if an error occurs
 	 */
-	public Stockists unmarshal(final File file) throws JAXBException {
+	public Stockists unmarshal(final File file) throws InvalidStockistDataException {
 		Validate.notNull(file, "file cannot be null");
 		Validate.isTrue(file.isFile(), "file must be a valid file");
 
-		final Source source = new StreamSource(file);
-		return unmarshal(source);
+		final ValidationEventCollector eventHandler = new ValidationEventCollector();
+		try {
+			final Source source = new StreamSource(file);
+			final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+			unmarshaller.setSchema(schema);
+			unmarshaller.setEventHandler(eventHandler);
+			return (Stockists) unmarshaller.unmarshal(source);
+		} catch (final JAXBException e) {
+			final String message = "Error reading stockist data from " + file.getAbsolutePath();
+			throw new InvalidStockistDataException(message, eventHandler.getEvents(), e);
+		}
 	}
 
 	/**
-	 * Unmarshals the specified {@link Source}
+	 * Unmarshals stockist data the specified {@link Source}
 	 * 
 	 * @param source the {@link Source}
 	 * @return a new instance of {@link Stockists}
-	 * @throws JAXBException if an error occurs
+	 * @throws InvalidStockistDataException if an error occurs
 	 */
-	public Stockists unmarshal(final Source source) throws JAXBException {
+	public Stockists unmarshal(final Source source) throws InvalidStockistDataException {
 		Validate.notNull(source, "source cannot be null");
 
-		final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-		unmarshaller.setSchema(schema);
-		return (Stockists) unmarshaller.unmarshal(source);
+		final ValidationEventCollector eventHandler = new ValidationEventCollector();
+		try {
+			final Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+			unmarshaller.setSchema(schema);
+			unmarshaller.setEventHandler(eventHandler);
+			return (Stockists) unmarshaller.unmarshal(source);
+		} catch (final JAXBException e) {
+			throw new InvalidStockistDataException("Error reading stockist data", eventHandler.getEvents(), e);
+		}
 	}
 
 	/**
@@ -90,15 +106,20 @@ public final class JAXBHelper {
 	 * 
 	 * @param stockists the {@link Stockists} to marshal to XML
 	 * @param result output target {@link Result}
-	 * @throws JAXBException if an error occurs
+	 * @throws InvalidStockistDataException if an error occurs
 	 */
-	public void marshal(final Stockists stockists, final Result result) throws JAXBException {
+	public void marshal(final Stockists stockists, final Result result) throws InvalidStockistDataException {
 		Validate.notNull(stockists, "stockists cannot be null");
 		Validate.notNull(result, "result cannot be null");
 
-		final Marshaller marshaller = jaxbContext.createMarshaller();
-		marshaller.setSchema(schema);
-		marshaller.marshal(stockists, result);
+		final ValidationEventCollector eventHandler = new ValidationEventCollector();
+		try {
+			final Marshaller marshaller = jaxbContext.createMarshaller();
+			marshaller.setSchema(schema);
+			marshaller.marshal(stockists, result);
+		} catch (final JAXBException e) {
+			throw new InvalidStockistDataException("Error writing stockist data", eventHandler.getEvents(), e);
+		}
 	}
 
 	/**
@@ -106,16 +127,22 @@ public final class JAXBHelper {
 	 * 
 	 * @param stockists the {@link Stockists} to marshal to XML
 	 * @param file the {@link File} to write the XML to
-	 * @throws JAXBException if an error occurs
+	 * @throws InvalidStockistDataException if an error occurs
 	 */
-	public void marshal(final Stockists stockists, final File file) throws JAXBException {
+	public void marshal(final Stockists stockists, final File file) throws InvalidStockistDataException {
 		Validate.notNull(stockists, "stockists cannot be null");
 		Validate.notNull(file, "file cannot be null");
 		Validate.isTrue(file.isFile(), "file must be a valid file");
 
-		final Marshaller marshaller = jaxbContext.createMarshaller();
-		marshaller.setSchema(schema);
-		marshaller.marshal(stockists, file);
+		final ValidationEventCollector eventHandler = new ValidationEventCollector();
+		try {
+			final Marshaller marshaller = jaxbContext.createMarshaller();
+			marshaller.setSchema(schema);
+			marshaller.marshal(stockists, file);
+		} catch (final JAXBException e) {
+			final String message = "Error writing stockist data to " + file.getAbsolutePath();
+			throw new InvalidStockistDataException(message, eventHandler.getEvents(), e);
+		}
 	}
 
 	/**
